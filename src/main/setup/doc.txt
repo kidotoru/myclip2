@@ -1,0 +1,14 @@
+仕様メモ
+
+
+new (新着) or recommend（おすすめ）
+
+http://xxxxxxx/myclip/
+
+http://xxxxxxx/myclip/new/2014040102/   yyyymmddhh
+
+http://xxxxxxx/myclip/new/2014040102/123456
+
+
+
+
