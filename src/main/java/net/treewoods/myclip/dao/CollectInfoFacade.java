@@ -28,5 +28,9 @@ public class CollectInfoFacade extends AbstractFacade<CollectInfo> {
 	public CollectInfoFacade() {
 		super(CollectInfo.class);
 	}
+
+	public int findMaxCollectId() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 	
 }
