@@ -1,0 +1,196 @@
+/* 
+    Document   : screen
+    Created on : 2013/05/22, 17:23:16
+    Author     : kido
+    Description:
+        Purpose of the stylesheet follows.
+*/
+@charset "utf-8";
+
+.ui-widget, .ui-widget .ui-widget {
+font-size:90% !important ;
+    font-weight: normal !important  ;  
+}
+.ui-widget-header {
+    font-weight: normal !important
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link { color: #21759b; }
+a:visited { color: #21759b; }
+a:hover { color: #ff0000; }
+a:active { color: #ff8000; }
+
+#hedder{
+    width: 100%;
+    height: 36px;
+    margin: 0 auto;
+    position: fixed;
+    top:0px;
+    z-index: 2; 
+     background-color: darkblue;
+opacity:0.8;
+}
+
+#sdisp {
+ position: fixed;
+ bottom: 10px;
+ left: 10px;
+  background: #000;
+  width: 100px; 
+  height: 48px;
+ z-index: 2; 
+ text-align: center;
+ font-size: 18px;
+opacity:0.8; 
+   -moz-border-radius: 5px;    /* Firefox */
+   -webkit-border-radius: 5px; /* Safari,Chrome */
+   border-radius: 5px;         /* CSS3 */
+
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+iframe{
+    max-width : 100%;
+   border-style:none;
+    margin : 0 auto;
+    text-align :left;
+    text-indent :0 ;
+}
+object {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    
+         
+}
+
+embed{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    
+}
+.item div{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#external_nico_0{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    
+}
+
+
+html, body{
+  width:100%;
+  height:100%;
+} 
+
+html {
+    font-family : "Droid Serif",
+        HiraGothicProN-W3,
+        "ヒラギノ角ゴ Pro W3",
+        "Hiragino Kaku Gothic Pro",
+        メイリオ,
+        Meiryo, Osaka,
+        "ＭＳ Ｐゴシック",
+        "MS PGothic",
+        Verdana, Arial, Helvetica, sans-serif;
+    font-size : 12px;
+    line-height : 1.6;  /* 12 * 1.5 =18 */
+ }
+ 
+ body{
+     background-color: #21759b;
+ }
+ 
+h1 {
+   font-size : 16px;
+   line-height :2;
+   color: #fff;
+
+} 
+h2 {
+   font-size : 14px;
+   line-height :1.5;
+/*   border-left:0.5em solid gold;*/
+ /*  padding-left:1em;*/
+   margin-bottom:1em;
+
+
+}
+
+.list {
+  margin: 3px;
+  background-color: white;
+  padding: 6px;
+  border-left:1.5em solid gold;
+  /*
+  border: 1px solid #21759b;padding: 12px;  
+  */
+   -moz-border-radius: 2px;    /* Firefox */
+   -webkit-border-radius: 2px; /* Safari,Chrome */
+   border-radius: 2px;         /* CSS3 */  
+}
+
+.item {
+  margin: 3px;
+   -moz-border-radius: 3px;    /* Firefox */
+   -webkit-border-radius: 3px; /* Safari,Chrome */
+   border-radius: 3px;         /* CSS3 */    /*
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 3px;
+  margin-top: 3px;
+ */
+    background-color: white;
+  padding: 12px;
+  /*
+  border: 1px solid #21759b;padding: 12px;  
+  */
+}
+
+#container{
+    margin: 0 auto;
+     margin-top: 42px;
+     padding-bottom: 48px;
+        height: 100%;
+        min-height: 100%;
+position: relative;
+}
+
+
+/*********************** ここからタブレット／PC用 **************************/
+
+@media screen and (min-width : 768px){
+
+.item {
+  width: 300px;
+  margin: 3px;
+  float: left;
+  background-color: white;
+  padding: 12px;
+  /*
+  border: 1px solid #21759b;padding: 12px;  
+  */
+}
+
+}

@@ -29,6 +29,9 @@ FooterRight=
 ShowPageoutRelation=1
 RDBMSType=5
 RDBMSTypeName=MySQL
+GenerateDropTableStatement=1
+DropTableIfExists=1
+CreateFk=1
 CommonField="生成日時","created_at","TIMESTAMP",,,"","",$FFFFFFFF
 CommonField="更新日時","updated_at","TIMESTAMP",,,"","",$FFFFFFFF
 DefaultPkName=%0:s_PKC
@@ -65,7 +68,7 @@ PName=access_history
 LName=アクセス履歴
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=900
 Top=1000
 Field="id","id","@INT",,0,"","",$FFFFFFFF,""
@@ -75,10 +78,10 @@ EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
 ModifiedDateTime=20140324193516
-Position="Main",900,1000
+Position="MAIN",900,1000
 
 [Relation]
-Entity1=correct_site
+Entity1=collect_site
 Entity2=article
 RelationType1=2
 RelationType2=3
@@ -99,11 +102,11 @@ TermPos1=R
 TermPos2=R
 
 [Entity]
-PName=correct_site
+PName=collect_site
 LName=収集サイト
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=150
 Top=600
 Field="id","id","@INT",,0,"","",$FFFFFFFF,""
@@ -114,12 +117,12 @@ Field="最終発行日時","last_pub_at","TIMESTAMP",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20140324193222
-Position="Main",150,600
+ModifiedDateTime=20140327194335
+Position="MAIN",150,600
 
 [Relation]
 Entity1=article
-Entity2=correct_article
+Entity2=collect_article
 RelationType1=2
 RelationType2=4
 Fields1=id
@@ -139,8 +142,8 @@ TermPos1=R
 TermPos2=R
 
 [Relation]
-Entity1=correct_info
-Entity2=correct_article
+Entity1=collect_info
+Entity2=collect_article
 RelationType1=2
 RelationType2=3
 Fields1=id
@@ -160,7 +163,7 @@ TermPos1=R
 TermPos2=R
 
 [Entity]
-PName=correct_info
+PName=collect_info
 LName=収集情報
 Comment=
 TableOption=
@@ -171,11 +174,11 @@ Field="id","id","@INT",,0,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20140324192504
+ModifiedDateTime=20140327194322
 Position="MAIN",800,100
 
 [Entity]
-PName=correct_article
+PName=collect_article
 LName=収集記事
 Comment=
 TableOption=
@@ -188,7 +191,7 @@ Field="記事ID","ariticle_id","@INT","NOT NULL",,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20140324192727
+ModifiedDateTime=20140327194329
 Position="MAIN",800,350
 
 [Entity]

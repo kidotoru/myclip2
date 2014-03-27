@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+        <f:metadata>
+            <f:viewParam name="a" value="#{_articleId}"/>
+            <f:viewParam name="t" value="#{articleAction.displayType}"/>
+            <f:event type="preRenderView" listener="#{articleAction.redirect(_articleId)}"/>
+        </f:metadata>    
+    <h:head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width"/> 
+        <title>MyClip</title>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+        <h:outputScript library="js" name="jquery.masonry.min.js"></h:outputScript>
+        <h:outputStylesheet library="css" name="screen.css"></h:outputStylesheet>         
+        <script type="text/javascript">
+$(function(){
+  var $container = $('#container');
+  $container.imagesLoaded( function(){
+
+  $('#container').masonry({
+    // options
+    itemSelector : '.item',
+    columnWidth : 5,
+    isResizable : true
+    
+  });
+});
+});
+
+        </script>
+    </h:head>
+    <h:body>
+            <div id="hedder">
+                <h1 style="display: inline;padding-left: 1em">My Clip</h1>
+                <p:commandButton value="Show" onclick="bar.show();" type="button" icon="ui-icon-disk" style="display: inline;float: right;margin-right: 16px;"/>                
+ <!--
+                <h:graphicImage url="/resources/images/2992_32.png" style="display: inline;float: right;;"/>
+ -->
+            </div>
+        <p:notificationBar position="top" effect="slide" widgetVar="bar" styleClass="top" style="z-index: 99;height: 100%;background-color: darkblue;opacity:0.8;">
+            <div style="overflow: auto;width: 100%;height: 100%;-webkit-overflow-scrolling:touch;">
+                <h1>  
+                    <h:outputText value="My Clip" style="color:#FFCC00;font-size:28px;" />
+                </h1>
+                <p:commandButton value="Hide" onclick="bar.hide();" type="button" />    
+                <h2>
+                    <h:outputText value="表示サイト選択" style="color:#fff;font-size:18px;" />
+                </h2>
+                <div style="margin-left: 16px;margin-bottom: 16px;">
+                    <p style="font-size: 16px;color: #fff;">全表示</p>
+                    <p style="font-size: 16px;color: #fff;">サイト０１</p>
+                    <p style="font-size: 16px;color: #fff;">サイト０２</p>
+                    <p style="font-size: 16px;color: #fff;">サイト０３</p>
+                    <p style="font-size: 16px;color: #fff;">サイト０４</p>
+                </div>
+                <h2>
+                    <h:outputText value="表示サイト選択" style="color:#fff;font-size:18px;" />
+                </h2>
+                <h2>
+                    <h:outputText value="表示サイト選択" style="color:#fff;font-size:18px;" />
+                </h2>
+                <h2>
+                    <h:outputText value="表示サイト選択" style="color:#fff;font-size:18px;" />
+                </h2>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                    <p style="font-size: 16px;color: #fff;">テストメッセージテストメッセージ</p>
+                <p:commandButton value="Hide" onclick="bar.hide();" type="button" />
+            </div>
+            </p:notificationBar>        
+            <div id="sdisp">
+                        <h:link value="詳細" outcome="index.xhtml" rendered="#{articleAction.displayType != 'd'}">
+                            <f:param name="t" value="d"/>
+                        </h:link>
+                        <h:link value="一覧" outcome="index.xhtml" rendered="#{articleAction.displayType == 'd'}">
+                        </h:link>
+                </div>
+        <div id="container">
+            <ui:repeat var="_article" value="#{articleAction.articleList}"  rendered="#{articleAction.displayType != 'd'}">
+                <div class="list">
+                    <h2 style="display: inline;">
+                        <h:link value="#{_article.articleTitle}" outcome="index.xhtml" target="_blank">
+                            <f:param name="a" value="#{_article.articleId}"/>
+                        </h:link>                    
+                    </h2>
+                    <p>
+                        <h:outputText value="#{_article.collectDate}">
+                            <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss"/>
+                        </h:outputText>
+                        <h:outputText value="#{_article.siteName}" style="margin-left: 1em"/>
+                        <h:outputText value="閲覧数＝#{_article.cnt}"  style="margin-left: 1em"/>                    
+                    </p>
+                </div>
+            </ui:repeat>
+
+
+            <ui:repeat var="_article" value="#{articleAction.articleList}" rendered="#{articleAction.displayType == 'd'}">
+                <div class="item">
+                    <h2>
+                        <h:link value="#{_article.articleTitle}" outcome="index.xhtml" target="_blank">
+                            <f:param name="a" value="#{_article.articleId}"/>
+                        </h:link>                    
+                    </h2>
+                    <p>
+                        <h:outputText value="#{_article.collectDate}">
+                            <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss"/>
+                        </h:outputText>                    
+                        <h:outputText value="#{_article.siteName}" style="margin-left: 1em"/>
+                        <h:outputText value="閲覧数＝#{_article.cnt}"  style="margin-left: 1em"/>                    
+                    </p>
+                    <h:outputText value="#{_article.articleContentsStr}" escape="false" />
+                </div>
+            </ui:repeat>
+        <div style="width: 1px;height:  58px;"></div>
+        </div> 
+    </h:body>
+</f:view>
+
+</html>
