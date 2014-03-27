@@ -4,68 +4,68 @@
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
--- ƒAƒNƒZƒX—š—ğ
+-- ã‚¢ã‚¯ã‚»ã‚¹å±¥æ­´
 drop table if exists access_history cascade;
 
 create table access_history (
   id INT comment 'id'
-  , to_article_id INT not null comment 'ƒŠƒ_ƒCƒŒƒNƒgæ‹L–ID'
-  , from_ip VARCHAR(32) comment 'ƒAƒNƒZƒXŒ³IP'
-  , created_at TIMESTAMP comment '¶¬“ú'
-  , updated_at TIMESTAMP comment 'XV“ú'
+  , to_article_id INT not null comment 'ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå…ˆè¨˜äº‹ID'
+  , from_ip VARCHAR(32) comment 'ã‚¢ã‚¯ã‚»ã‚¹å…ƒIP'
+  , created_at TIMESTAMP comment 'ç”Ÿæˆæ—¥æ™‚'
+  , updated_at TIMESTAMP comment 'æ›´æ–°æ—¥æ™‚'
   , constraint access_history_PKC primary key (id)
-) comment 'ƒAƒNƒZƒX—š—ğ' ;
+) comment 'ã‚¢ã‚¯ã‚»ã‚¹å±¥æ­´' ;
 
--- ûWƒTƒCƒg
+-- åé›†ã‚µã‚¤ãƒˆ
 drop table if exists collect_site cascade;
 
 create table collect_site (
   id INT comment 'id'
   , url VARCHAR(512) comment 'URL'
-  , site_name VARCHAR(512) comment 'ƒTƒCƒg–¼'
-  , flg_delete CHAR(1) default '0' not null comment 'íœƒtƒ‰ƒO'
-  , last_pub_at TIMESTAMP comment 'ÅI”­s“ú'
-  , created_at TIMESTAMP comment '¶¬“ú'
-  , updated_at TIMESTAMP comment 'XV“ú'
+  , site_name VARCHAR(512) comment 'ã‚µã‚¤ãƒˆå'
+  , flg_delete CHAR(1) default '0' not null comment 'å‰Šé™¤ãƒ•ãƒ©ã‚°'
+  , last_pub_at TIMESTAMP comment 'æœ€çµ‚ç™ºè¡Œæ—¥æ™‚'
+  , created_at TIMESTAMP comment 'ç”Ÿæˆæ—¥æ™‚'
+  , updated_at TIMESTAMP comment 'æ›´æ–°æ—¥æ™‚'
   , constraint collect_site_PKC primary key (id)
-) comment 'ûWƒTƒCƒg' ;
+) comment 'åé›†ã‚µã‚¤ãƒˆ' ;
 
--- ûWî•ñ
+-- åé›†æƒ…å ±
 drop table if exists collect_info cascade;
 
 create table collect_info (
   id INT comment 'id'
-  , created_at TIMESTAMP comment '¶¬“ú'
-  , updated_at TIMESTAMP comment 'XV“ú'
+  , created_at TIMESTAMP comment 'ç”Ÿæˆæ—¥æ™‚'
+  , updated_at TIMESTAMP comment 'æ›´æ–°æ—¥æ™‚'
   , constraint collect_info_PKC primary key (id)
-) comment 'ûWî•ñ' ;
+) comment 'åé›†æƒ…å ±' ;
 
--- ûW‹L–
+-- åé›†è¨˜äº‹
 drop table if exists collect_article cascade;
 
 create table collect_article (
   id INT comment 'id'
-  , correct_id INT not null comment 'ûWID'
-  , ariticle_id INT not null comment '‹L–ID'
-  , created_at TIMESTAMP comment '¶¬“ú'
-  , updated_at TIMESTAMP comment 'XV“ú'
+  , correct_id INT not null comment 'åé›†ID'
+  , ariticle_id INT not null comment 'è¨˜äº‹ID'
+  , created_at TIMESTAMP comment 'ç”Ÿæˆæ—¥æ™‚'
+  , updated_at TIMESTAMP comment 'æ›´æ–°æ—¥æ™‚'
   , constraint collect_article_PKC primary key (id)
-) comment 'ûW‹L–' ;
+) comment 'åé›†è¨˜äº‹' ;
 
--- ‹L–
+-- è¨˜äº‹
 drop table if exists article cascade;
 
 create table article (
   id INT comment 'id'
-  , site_id INT not null comment 'ƒTƒCƒgID'
-  , article_url VARCHAR(512) comment '‹L–URL'
-  , article_title VARCHAR(512) comment '‹L––¼'
-  , article_contents BLOB comment '‹L–“à—e'
-  , publish_at TIMESTAMP comment '”zM“ú'
-  , created_at TIMESTAMP comment '¶¬“ú'
-  , updated_at TIMESTAMP comment 'XV“ú'
+  , site_id INT not null comment 'ã‚µã‚¤ãƒˆID'
+  , article_url VARCHAR(512) comment 'è¨˜äº‹URL'
+  , article_title VARCHAR(512) comment 'è¨˜äº‹å'
+  , article_contents BLOB comment 'è¨˜äº‹å†…å®¹'
+  , publish_at TIMESTAMP comment 'é…ä¿¡æ—¥æ™‚'
+  , created_at TIMESTAMP comment 'ç”Ÿæˆæ—¥æ™‚'
+  , updated_at TIMESTAMP comment 'æ›´æ–°æ—¥æ™‚'
   , constraint article_PKC primary key (id)
-) comment '‹L–' ;
+) comment 'è¨˜äº‹' ;
 
 alter table access_history
   add constraint access_history_FK1 foreign key (to_article_id) references article(id);
