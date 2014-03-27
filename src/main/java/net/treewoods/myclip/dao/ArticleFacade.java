@@ -6,6 +6,7 @@
 
 package net.treewoods.myclip.dao;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,10 @@ public class ArticleFacade extends AbstractFacade<Article> {
 
 	public ArticleFacade() {
 		super(Article.class);
+	}
+
+	public List<Article> findByArticleUrl(String link) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	
 }
