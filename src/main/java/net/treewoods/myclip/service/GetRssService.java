@@ -47,8 +47,8 @@ public class GetRssService {
 	@Inject
 	private CollectArticleFacade collectArticleFacade;
 
-	@Schedule(minute = "*", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
-	//@Schedule(hour = "*/1", dayOfMonth = "*")
+	//@Schedule(minute = "*", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
+	@Schedule(hour = "*/1", dayOfMonth = "*")
 	public void execute() {
 		try {
 			log.info("GetRssService START");
@@ -134,8 +134,8 @@ public class GetRssService {
 						this.articleFacade.create(article);
 
 						CollectArticle collectArticle = new CollectArticle();
-						collectArticle.setCollectId(collectInfo);
-						collectArticle.setArticleId(article);
+						collectArticle.setCorrectId(collectInfo);
+						collectArticle.setAriticleId(article);
 
 						this.collectArticleFacade.create(collectArticle);
 
@@ -145,8 +145,8 @@ public class GetRssService {
 						// 取得できた場合、取得できたものを使用する。
 						for (Article article : resultList) {
 							CollectArticle collectArticle = new CollectArticle();
-							collectArticle.setCollectId(collectInfo);
-							collectArticle.setArticleId(article);
+							collectArticle.setCorrectId(collectInfo);
+							collectArticle.setAriticleId(article);
 
 							this.collectArticleFacade.create(collectArticle);
 

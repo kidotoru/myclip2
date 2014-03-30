@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package net.treewoods.myclip.dao;
 
 import java.util.List;
@@ -24,12 +30,8 @@ public class ArticleFacade extends AbstractFacade<Article> {
 		super(Article.class);
 	}
 
-    public List<Article> findByArticleUrl(String url){
-        List<Article> resultList =
-                em.createNamedQuery("Article.findByArticleUrl", Article.class)
-                .setParameter("articleUrl", url)
-                .getResultList();
-        return resultList;
-    }    
+	public List<Article> findByArticleUrl(String link) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 	
 }

@@ -79,7 +79,7 @@ public class Article implements Serializable {
 	private CollectSite siteId;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "toArticleId")
 	private List<AccessHistory> accessHistoryList;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "articleId")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ariticleId")
 	private List<CollectArticle> collectArticleList;
 
 	public Article() {

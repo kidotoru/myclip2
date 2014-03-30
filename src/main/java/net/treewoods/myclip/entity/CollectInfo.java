@@ -53,7 +53,7 @@ public class CollectInfo implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "collectId")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "correctId")
 	private List<CollectArticle> collectArticleList;
 
 	public CollectInfo() {
