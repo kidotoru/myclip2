@@ -51,12 +51,12 @@ public class CollectArticle implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
-	@JoinColumn(name = "ariticle_id", referencedColumnName = "id")
+	@JoinColumn(name = "article_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-	private Article ariticleId;
-	@JoinColumn(name = "correct_id", referencedColumnName = "id")
+	private Article articleId;
+	@JoinColumn(name = "collect_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-	private CollectInfo correctId;
+	private CollectInfo collectId;
 
 	public CollectArticle() {
 	}
@@ -95,20 +95,20 @@ public class CollectArticle implements Serializable {
 		this.updatedAt = updatedAt;
 	}
 
-	public Article getAriticleId() {
-		return ariticleId;
+	public Article getArticleId() {
+		return articleId;
 	}
 
-	public void setAriticleId(Article ariticleId) {
-		this.ariticleId = ariticleId;
+	public void setArticleId(Article articleId) {
+		this.articleId = articleId;
 	}
 
-	public CollectInfo getCorrectId() {
-		return correctId;
+	public CollectInfo getCollectId() {
+		return collectId;
 	}
 
-	public void setCorrectId(CollectInfo correctId) {
-		this.correctId = correctId;
+	public void setCollectId(CollectInfo collectId) {
+		this.collectId = collectId;
 	}
 
 	@Override

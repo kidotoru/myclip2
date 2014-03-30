@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package net.treewoods.myclip.dao;
 
 import javax.ejb.Stateless;
@@ -29,8 +23,13 @@ public class CollectInfoFacade extends AbstractFacade<CollectInfo> {
 		super(CollectInfo.class);
 	}
 
-	public int findMaxCollectId() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-	
+    static final String FIND_MAX_COLLECT_ID_SQL = "select max(t.id) as current_id from collect_info t";
+    public int findMaxCollectId(){
+        Object obj = this.em.createNativeQuery(FIND_MAX_COLLECT_ID_SQL).getSingleResult();
+        int result = 0;
+        if ( obj != null) {
+            result = (int)obj;
+        }
+        return result;
+    }    
 }
