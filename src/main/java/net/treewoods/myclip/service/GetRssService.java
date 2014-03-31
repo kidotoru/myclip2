@@ -134,8 +134,8 @@ public class GetRssService {
 						this.articleFacade.create(article);
 
 						CollectArticle collectArticle = new CollectArticle();
-						collectArticle.setCorrectId(collectInfo);
-						collectArticle.setAriticleId(article);
+						collectArticle.setCollectId(collectInfo);
+						collectArticle.setArticleId(article);
 
 						this.collectArticleFacade.create(collectArticle);
 
@@ -145,8 +145,8 @@ public class GetRssService {
 						// 取得できた場合、取得できたものを使用する。
 						for (Article article : resultList) {
 							CollectArticle collectArticle = new CollectArticle();
-							collectArticle.setCorrectId(collectInfo);
-							collectArticle.setAriticleId(article);
+							collectArticle.setCollectId(collectInfo);
+							collectArticle.setArticleId(article);
 
 							this.collectArticleFacade.create(collectArticle);
 
