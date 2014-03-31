@@ -1,10 +1,5 @@
-﻿-- Project Name : myclip2
--- Date/Time    : 2014/04/01 0:37:03
--- Author       : kido
--- RDBMS Type   : MySQL
--- Application  : A5:SQL Mk-2
 
--- アクセス履歴
+
 drop table if exists access_history cascade;
 drop table if exists collect_article cascade;
 drop table if exists collect_info cascade;
