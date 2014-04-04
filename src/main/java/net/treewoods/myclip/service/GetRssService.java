@@ -45,7 +45,6 @@ public class GetRssService {
     private ArticleFacade articleFacade;
     @Inject
     private CollectInfoFacade collectInfoFacade;
-
     @Inject
     private CollectArticleFacade collectArticleFacade;
 
@@ -66,11 +65,9 @@ public class GetRssService {
 
             // 取得対象の数だけ繰り返し
             for (CollectSite target : targetList) {
-
                 if (target.getFlgDelete() == '1') {
                     continue;
                 }
-
                 // RSS取得
                 URL feedUrl;
                 try {
@@ -151,9 +148,7 @@ public class GetRssService {
                             collectArticle.setArticleId(article);
 
                             this.collectArticleFacade.create(collectArticle);
-
                             collectInfo.getCollectArticleList().add(collectArticle);
-
                         }
 
                     }
