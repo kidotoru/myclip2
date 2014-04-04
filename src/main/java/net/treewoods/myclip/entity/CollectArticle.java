@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,110 +32,107 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "collect_article")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "CollectArticle.findAll", query = "SELECT c FROM CollectArticle c"),
-	@NamedQuery(name = "CollectArticle.findById", query = "SELECT c FROM CollectArticle c WHERE c.id = :id"),
-	@NamedQuery(name = "CollectArticle.findByCreatedAt", query = "SELECT c FROM CollectArticle c WHERE c.createdAt = :createdAt"),
-	@NamedQuery(name = "CollectArticle.findByUpdatedAt", query = "SELECT c FROM CollectArticle c WHERE c.updatedAt = :updatedAt")})
+    @NamedQuery(name = "CollectArticle.findAll", query = "SELECT c FROM CollectArticle c"),
+    @NamedQuery(name = "CollectArticle.findById", query = "SELECT c FROM CollectArticle c WHERE c.id = :id"),
+    @NamedQuery(name = "CollectArticle.findByCreatedAt", query = "SELECT c FROM CollectArticle c WHERE c.createdAt = :createdAt"),
+    @NamedQuery(name = "CollectArticle.findByUpdatedAt", query = "SELECT c FROM CollectArticle c WHERE c.updatedAt = :updatedAt")})
 public class CollectArticle implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
-	private Integer id;
-	@Basic(optional = false)
-    @NotNull
+    private Integer id;
+    @Basic(optional = false)
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
-	private Date createdAt;
-	@Basic(optional = false)
-    @NotNull
+    private Date createdAt;
+    @Basic(optional = false)
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
-	private Date updatedAt;
-	@JoinColumn(name = "article_id", referencedColumnName = "id")
+    private Date updatedAt;
+    @JoinColumn(name = "article_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-	private Article articleId;
-	@JoinColumn(name = "collect_id", referencedColumnName = "id")
+    private Article articleId;
+    @JoinColumn(name = "collect_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-	private CollectInfo collectId;
+    private CollectInfo collectId;
 
-	public CollectArticle() {
-	}
+    public CollectArticle() {
+    }
 
-	public CollectArticle(Integer id) {
-		this.id = id;
-	}
+    public CollectArticle(Integer id) {
+        this.id = id;
+    }
 
-	public CollectArticle(Integer id, Date createdAt, Date updatedAt) {
-		this.id = id;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
+    public CollectArticle(Integer id, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
-	public Article getArticleId() {
-		return articleId;
-	}
+    public Article getArticleId() {
+        return articleId;
+    }
 
-	public void setArticleId(Article articleId) {
-		this.articleId = articleId;
-	}
+    public void setArticleId(Article articleId) {
+        this.articleId = articleId;
+    }
 
-	public CollectInfo getCollectId() {
-		return collectId;
-	}
+    public CollectInfo getCollectId() {
+        return collectId;
+    }
 
-	public void setCollectId(CollectInfo collectId) {
-		this.collectId = collectId;
-	}
+    public void setCollectId(CollectInfo collectId) {
+        this.collectId = collectId;
+    }
 
-	@Override
-	public int hashCode() {
-		int hash = 0;
-		hash += (id != null ? id.hashCode() : 0);
-		return hash;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
 
-	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof CollectArticle)) {
-			return false;
-		}
-		CollectArticle other = (CollectArticle) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-			return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof CollectArticle)) {
+            return false;
+        }
+        CollectArticle other = (CollectArticle) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public String toString() {
-		return "net.treewoods.myclip.entity.CollectArticle[ id=" + id + " ]";
-	}
-	
+    @Override
+    public String toString() {
+        return "net.treewoods.myclip.entity.CollectArticle[ id=" + id + " ]";
+    }
+    
 }
