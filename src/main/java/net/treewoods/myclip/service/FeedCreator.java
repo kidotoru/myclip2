@@ -124,6 +124,5 @@ public class FeedCreator {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-
 	}
 }
