@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.annotation.PostConstruct;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -35,6 +37,7 @@ import org.slf4j.LoggerFactory;
  * @author kido
  */
 @Singleton
+@Startup
 public class GetRssService {
 
     // ロガーのインスタンス
@@ -48,8 +51,8 @@ public class GetRssService {
     @Inject
     private CollectArticleFacade collectArticleFacade;
 
-    //@Schedule(minute = "*", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
-    @Schedule(hour = "*/1", dayOfMonth = "*")
+    @PostConstruct
+	@Schedule(hour = "*/1", dayOfMonth = "*")
     public void execute() {
         try {
             log.info("GetRssService START");
