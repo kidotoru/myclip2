@@ -48,8 +48,8 @@ public class GetRssService {
     @Inject
     private CollectArticleFacade collectArticleFacade;
 
-    @Schedule(minute = "*", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
-   // @Schedule(hour = "*/1", dayOfMonth = "*")
+    //@Schedule(minute = "*", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
+    @Schedule(hour = "*/1", dayOfMonth = "*")
     public void execute() {
         try {
             log.info("GetRssService START");
