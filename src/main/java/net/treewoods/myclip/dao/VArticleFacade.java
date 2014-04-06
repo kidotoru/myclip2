@@ -67,12 +67,13 @@ public class VArticleFacade extends AbstractFacade<VArticle>{
 		sb.append("  , collect_article t2 ");
 		sb.append("  , article t3 ");
 		sb.append("where ");
-		sb.append("  t1.id = ?1 ");
+		sb.append("  t1.id = :ID ");
 		sb.append("  and t1.id = t2.collect_id ");
 		sb.append("  and t2.article_id = t3.id ");
 		sb.append("order by ");
 		sb.append("  t3.created_at desc ");
 		sb.append("  , t3.id ");
+		sb.append("limit :START_POS ,:END_POS ");
 
 		FIND_BY_COLLECT_ID_SQL = sb.toString();
 	}
@@ -80,7 +81,9 @@ public class VArticleFacade extends AbstractFacade<VArticle>{
     public List<VArticle> findByCollectId(int collectId){
         List<VArticle> resultList =
                 em.createNativeQuery(FIND_BY_COLLECT_ID_SQL, VArticle.class)
-                .setParameter(1, collectId)
+                .setParameter("ID", collectId)
+                .setParameter("START_POS", 0)
+                .setParameter("END_POS", 9)
                 .getResultList();
         return resultList;
     }

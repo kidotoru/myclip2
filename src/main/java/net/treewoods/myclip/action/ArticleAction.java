@@ -55,8 +55,6 @@ public class ArticleAction {
         this.displayType = displayType;
     }
     
-    
-    
     public List<VArticle> getArticleList(){
         log.info("getArticleList start");
         if ( this.articleList == null ) {
