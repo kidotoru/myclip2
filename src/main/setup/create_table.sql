@@ -51,7 +51,7 @@ create table collect_article (
 create table article (
   id INT AUTO_INCREMENT comment 'id'
   , site_id INT not null comment 'サイトID'
-  , article_url VARCHAR(512) comment '記事URL'
+  , article_url VARCHAR(512) CHARACTER SET latin1 comment '記事URL'
   , article_title VARCHAR(512) comment '記事名'
   , article_contents BLOB comment '記事内容'
   , publish_at TIMESTAMP default 0 comment '配信日時'
@@ -59,6 +59,9 @@ create table article (
   , updated_at TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新日時'
   , constraint article_PKC primary key (id)
 ) comment '記事' ;
+
+create index article_IX1
+  on article(article_url);
 
 alter table access_history
   add constraint access_history_FK1 foreign key (to_article_id) references article(id);
