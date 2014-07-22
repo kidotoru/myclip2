@@ -154,7 +154,6 @@
             <configuration>
                 <driver>com.mysql.jdbc.Driver</driver>
                 <url>jdbc:mysql://localhost:3306</url>
-                <initialDescription>Base Migration</initialDescription>
                 <schemas>
                     <schema>myclip2</schema>
                 </schemas>
