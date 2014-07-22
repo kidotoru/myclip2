@@ -157,6 +157,7 @@
                 <schemas>
                     <schema>myclip2</schema>
                 </schemas>
+                <initVersion>0</initVersion>
                 <serverId>flyway-db</serverId>
             </configuration>
           </plugin>            
