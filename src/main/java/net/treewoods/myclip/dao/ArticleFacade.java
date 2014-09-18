@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package net.treewoods.myclip.dao;
 
 import java.util.List;
@@ -12,18 +18,18 @@ import net.treewoods.myclip.entity.Article;
  */
 @Stateless
 public class ArticleFacade extends AbstractFacade<Article> {
-	@PersistenceContext(unitName = "net.treewoods_myclip2_war_1.0.0PU")
-	private EntityManager em;
+    @PersistenceContext(unitName = "net.treewoods_myclip2_war_1.0.0PU")
+    private EntityManager em;
 
-	@Override
-	protected EntityManager getEntityManager() {
-		return em;
-	}
+    @Override
+    protected EntityManager getEntityManager() {
+	return em;
+    }
 
-	public ArticleFacade() {
-		super(Article.class);
-	}
-
+    public ArticleFacade() {
+	super(Article.class);
+    }
+        
     public List<Article> findByArticleUrl(String url){
         List<Article> resultList =
                 em.createNamedQuery("Article.findByArticleUrl", Article.class)
@@ -31,5 +37,4 @@ public class ArticleFacade extends AbstractFacade<Article> {
                 .getResultList();
         return resultList;
     }    
-	
 }

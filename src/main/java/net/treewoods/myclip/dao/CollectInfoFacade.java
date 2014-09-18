@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package net.treewoods.myclip.dao;
 
 import javax.ejb.Stateless;
@@ -11,18 +17,18 @@ import net.treewoods.myclip.entity.CollectInfo;
  */
 @Stateless
 public class CollectInfoFacade extends AbstractFacade<CollectInfo> {
-	@PersistenceContext(unitName = "net.treewoods_myclip2_war_1.0.0PU")
-	private EntityManager em;
+    @PersistenceContext(unitName = "net.treewoods_myclip2_war_1.0.0PU")
+    private EntityManager em;
 
-	@Override
-	protected EntityManager getEntityManager() {
-		return em;
-	}
+    @Override
+    protected EntityManager getEntityManager() {
+	return em;
+    }
 
-	public CollectInfoFacade() {
-		super(CollectInfo.class);
-	}
-
+    public CollectInfoFacade() {
+	super(CollectInfo.class);
+    }
+        
     static final String FIND_MAX_COLLECT_ID_SQL = "select max(t.id) as current_id from collect_info t";
     public int findMaxCollectId(){
         Object obj = this.em.createNativeQuery(FIND_MAX_COLLECT_ID_SQL).getSingleResult();

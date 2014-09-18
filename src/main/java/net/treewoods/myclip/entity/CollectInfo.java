@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kido
  */
 @Entity
-@Table(name = "collect_info")
+@Table(name = "collect_info", catalog = "myclip2", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CollectInfo.findAll", query = "SELECT c FROM CollectInfo c"),
@@ -45,10 +45,12 @@ public class CollectInfo implements Serializable {
     @Basic(optional = false)
     private Integer id;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -59,71 +61,71 @@ public class CollectInfo implements Serializable {
     }
 
     public CollectInfo(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public CollectInfo(Integer id, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+	this.id = id;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
-        return id;
+	return id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+	return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+	this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return updatedAt;
+	return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+	this.updatedAt = updatedAt;
     }
 
     @XmlTransient
     public List<CollectArticle> getCollectArticleList() {
-        return collectArticleList;
+	return collectArticleList;
     }
 
     public void setCollectArticleList(List<CollectArticle> collectArticleList) {
-        this.collectArticleList = collectArticleList;
+	this.collectArticleList = collectArticleList;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+	int hash = 0;
+	hash += (id != null ? id.hashCode() : 0);
+	return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CollectInfo)) {
-            return false;
-        }
-        CollectInfo other = (CollectInfo) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+	// TODO: Warning - this method won't work in the case the id fields are not set
+	if (!(object instanceof CollectInfo)) {
+	    return false;
+	}
+	CollectInfo other = (CollectInfo) object;
+	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-        return "net.treewoods.myclip.entity.CollectInfo[ id=" + id + " ]";
+	return "net.treewoods.myclip.entity.CollectInfo[ id=" + id + " ]";
     }
     
 }

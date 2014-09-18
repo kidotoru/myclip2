@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author kido
  */
 @Entity
-@Table(name = "access_history")
+@Table(name = "access_history", catalog = "myclip2", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AccessHistory.findAll", query = "SELECT a FROM AccessHistory a"),
@@ -48,10 +48,12 @@ public class AccessHistory implements Serializable {
     @Column(name = "from_ip")
     private String fromIp;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -63,78 +65,78 @@ public class AccessHistory implements Serializable {
     }
 
     public AccessHistory(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public AccessHistory(Integer id, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+	this.id = id;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
-        return id;
+	return id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public String getFromIp() {
-        return fromIp;
+	return fromIp;
     }
 
     public void setFromIp(String fromIp) {
-        this.fromIp = fromIp;
+	this.fromIp = fromIp;
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+	return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+	this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return updatedAt;
+	return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+	this.updatedAt = updatedAt;
     }
 
     public Article getToArticleId() {
-        return toArticleId;
+	return toArticleId;
     }
 
     public void setToArticleId(Article toArticleId) {
-        this.toArticleId = toArticleId;
+	this.toArticleId = toArticleId;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+	int hash = 0;
+	hash += (id != null ? id.hashCode() : 0);
+	return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AccessHistory)) {
-            return false;
-        }
-        AccessHistory other = (AccessHistory) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+	// TODO: Warning - this method won't work in the case the id fields are not set
+	if (!(object instanceof AccessHistory)) {
+	    return false;
+	}
+	AccessHistory other = (AccessHistory) object;
+	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-        return "net.treewoods.myclip.entity.AccessHistory[ id=" + id + " ]";
+	return "net.treewoods.myclip.entity.AccessHistory[ id=" + id + " ]";
     }
     
 }

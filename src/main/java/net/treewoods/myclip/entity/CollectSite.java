@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kido
  */
 @Entity
-@Table(name = "collect_site")
+@Table(name = "collect_site", catalog = "myclip2", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CollectSite.findAll", query = "SELECT c FROM CollectSite c"),
@@ -59,14 +59,17 @@ public class CollectSite implements Serializable {
     @Column(name = "flg_delete")
     private Character flgDelete;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "last_pub_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastPubAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -77,105 +80,105 @@ public class CollectSite implements Serializable {
     }
 
     public CollectSite(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public CollectSite(Integer id, Character flgDelete, Date lastPubAt, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.flgDelete = flgDelete;
-        this.lastPubAt = lastPubAt;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+	this.id = id;
+	this.flgDelete = flgDelete;
+	this.lastPubAt = lastPubAt;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
-        return id;
+	return id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public String getUrl() {
-        return url;
+	return url;
     }
 
     public void setUrl(String url) {
-        this.url = url;
+	this.url = url;
     }
 
     public String getSiteName() {
-        return siteName;
+	return siteName;
     }
 
     public void setSiteName(String siteName) {
-        this.siteName = siteName;
+	this.siteName = siteName;
     }
 
     public Character getFlgDelete() {
-        return flgDelete;
+	return flgDelete;
     }
 
     public void setFlgDelete(Character flgDelete) {
-        this.flgDelete = flgDelete;
+	this.flgDelete = flgDelete;
     }
 
     public Date getLastPubAt() {
-        return lastPubAt;
+	return lastPubAt;
     }
 
     public void setLastPubAt(Date lastPubAt) {
-        this.lastPubAt = lastPubAt;
+	this.lastPubAt = lastPubAt;
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+	return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+	this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return updatedAt;
+	return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+	this.updatedAt = updatedAt;
     }
 
     @XmlTransient
     public List<Article> getArticleList() {
-        return articleList;
+	return articleList;
     }
 
     public void setArticleList(List<Article> articleList) {
-        this.articleList = articleList;
+	this.articleList = articleList;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+	int hash = 0;
+	hash += (id != null ? id.hashCode() : 0);
+	return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CollectSite)) {
-            return false;
-        }
-        CollectSite other = (CollectSite) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+	// TODO: Warning - this method won't work in the case the id fields are not set
+	if (!(object instanceof CollectSite)) {
+	    return false;
+	}
+	CollectSite other = (CollectSite) object;
+	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-        return "net.treewoods.myclip.entity.CollectSite[ id=" + id + " ]";
+	return "net.treewoods.myclip.entity.CollectSite[ id=" + id + " ]";
     }
     
 }

@@ -9,7 +9,8 @@
         <f:metadata>
             <f:viewParam name="a" value="#{_articleId}"/>
             <f:viewParam name="t" value="#{articleAction.displayType}"/>
-            <f:event type="preRenderView" listener="#{articleAction.redirect(_articleId)}"/>
+            
+            <f:event type="preRenderView" listener="#{articleAction.redirect( _articleId )}"/>
         </f:metadata>    
     <h:head>
 <meta charset="utf-8"/>

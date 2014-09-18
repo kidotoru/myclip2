@@ -83,7 +83,7 @@ public class VArticleFacade extends AbstractFacade<VArticle>{
                 em.createNativeQuery(FIND_BY_COLLECT_ID_SQL, VArticle.class)
                 .setParameter("ID", collectId)
                 .setParameter("START_POS", 0)
-                .setParameter("END_POS", 9)
+                .setParameter("END_POS", 99)
                 .getResultList();
         return resultList;
     }

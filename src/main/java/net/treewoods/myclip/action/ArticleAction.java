@@ -2,6 +2,7 @@ package net.treewoods.myclip.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -103,6 +104,8 @@ public class ArticleAction {
                     AccessHistory accessHistory = new AccessHistory();
                     accessHistory.setFromIp(remoteAddr);
                     accessHistory.setToArticleId(article);
+		    accessHistory.setCreatedAt(new Date());
+		    accessHistory.setUpdatedAt(new Date());
                     
                     this.accessHistoryFacade.create(accessHistory);
                     

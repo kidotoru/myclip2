@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author kido
  */
 @Entity
-@Table(name = "collect_article")
+@Table(name = "collect_article", catalog = "myclip2", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CollectArticle.findAll", query = "SELECT c FROM CollectArticle c"),
@@ -43,96 +43,98 @@ public class CollectArticle implements Serializable {
     @Basic(optional = false)
     private Integer id;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @JoinColumn(name = "article_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Article articleId;
     @JoinColumn(name = "collect_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CollectInfo collectId;
+    @JoinColumn(name = "article_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Article articleId;
 
     public CollectArticle() {
     }
 
     public CollectArticle(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public CollectArticle(Integer id, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+	this.id = id;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
-        return id;
+	return id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+	return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+	this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return updatedAt;
+	return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Article getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Article articleId) {
-        this.articleId = articleId;
+	this.updatedAt = updatedAt;
     }
 
     public CollectInfo getCollectId() {
-        return collectId;
+	return collectId;
     }
 
     public void setCollectId(CollectInfo collectId) {
-        this.collectId = collectId;
+	this.collectId = collectId;
+    }
+
+    public Article getArticleId() {
+	return articleId;
+    }
+
+    public void setArticleId(Article articleId) {
+	this.articleId = articleId;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+	int hash = 0;
+	hash += (id != null ? id.hashCode() : 0);
+	return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CollectArticle)) {
-            return false;
-        }
-        CollectArticle other = (CollectArticle) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+	// TODO: Warning - this method won't work in the case the id fields are not set
+	if (!(object instanceof CollectArticle)) {
+	    return false;
+	}
+	CollectArticle other = (CollectArticle) object;
+	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-        return "net.treewoods.myclip.entity.CollectArticle[ id=" + id + " ]";
+	return "net.treewoods.myclip.entity.CollectArticle[ id=" + id + " ]";
     }
     
 }

@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kido
  */
 @Entity
-@Table(name="article")
+@Table(name="article", catalog = "myclip2", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Article.findAll", query = "SELECT a FROM Article a"),
@@ -61,14 +61,17 @@ public class Article implements Serializable {
     @Column(name = "article_contents")
     private byte[] articleContents;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "publish_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date publishAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -84,121 +87,121 @@ public class Article implements Serializable {
     }
 
     public Article(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public Article(Integer id, Date publishAt, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.publishAt = publishAt;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+	this.id = id;
+	this.publishAt = publishAt;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
-        return id;
+	return id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public String getArticleUrl() {
-        return articleUrl;
+	return articleUrl;
     }
 
     public void setArticleUrl(String articleUrl) {
-        this.articleUrl = articleUrl;
+	this.articleUrl = articleUrl;
     }
 
     public String getArticleTitle() {
-        return articleTitle;
+	return articleTitle;
     }
 
     public void setArticleTitle(String articleTitle) {
-        this.articleTitle = articleTitle;
+	this.articleTitle = articleTitle;
     }
 
     public byte[] getArticleContents() {
-        return articleContents;
+	return articleContents;
     }
 
     public void setArticleContents(byte[] articleContents) {
-        this.articleContents = articleContents;
+	this.articleContents = articleContents;
     }
 
     public Date getPublishAt() {
-        return publishAt;
+	return publishAt;
     }
 
     public void setPublishAt(Date publishAt) {
-        this.publishAt = publishAt;
+	this.publishAt = publishAt;
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+	return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+	this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
-        return updatedAt;
+	return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+	this.updatedAt = updatedAt;
     }
 
     public CollectSite getSiteId() {
-        return siteId;
+	return siteId;
     }
 
     public void setSiteId(CollectSite siteId) {
-        this.siteId = siteId;
+	this.siteId = siteId;
     }
 
     @XmlTransient
     public List<AccessHistory> getAccessHistoryList() {
-        return accessHistoryList;
+	return accessHistoryList;
     }
 
     public void setAccessHistoryList(List<AccessHistory> accessHistoryList) {
-        this.accessHistoryList = accessHistoryList;
+	this.accessHistoryList = accessHistoryList;
     }
 
     @XmlTransient
     public List<CollectArticle> getCollectArticleList() {
-        return collectArticleList;
+	return collectArticleList;
     }
 
     public void setCollectArticleList(List<CollectArticle> collectArticleList) {
-        this.collectArticleList = collectArticleList;
+	this.collectArticleList = collectArticleList;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+	int hash = 0;
+	hash += (id != null ? id.hashCode() : 0);
+	return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Article)) {
-            return false;
-        }
-        Article other = (Article) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+	// TODO: Warning - this method won't work in the case the id fields are not set
+	if (!(object instanceof Article)) {
+	    return false;
+	}
+	Article other = (Article) object;
+	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-        return "net.treewoods.myclip.entity.Article[ id=" + id + " ]";
+	return "net.treewoods.myclip.entity.Article[ id=" + id + " ]";
     }
     
 }

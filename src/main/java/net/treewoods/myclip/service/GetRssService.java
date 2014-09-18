@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,7 +53,8 @@ public class GetRssService {
     private CollectArticleFacade collectArticleFacade;
 
     @PostConstruct
-	@Schedule(hour = "*/1", dayOfMonth = "*")
+    @Schedule(hour = "*/1", dayOfMonth = "*")
+    //@Schedule(hour="*", minute="*", second="*/30")
     public void execute() {
         try {
             log.info("GetRssService START");
@@ -61,13 +63,17 @@ public class GetRssService {
             CollectInfo collectInfo = new CollectInfo();
             collectInfo.setCollectArticleList(new ArrayList<CollectArticle>());
             // 取得情報を生成
-            this.collectInfoFacade.create(collectInfo);
+	    collectInfo.setCreatedAt(new Date());
+	    collectInfo.setUpdatedAt(new Date());
+            this.collectInfoFacade.create(collectInfo);	    
 
-            // 取得対象取得
+
+	    // 取得対象取得
             List<CollectSite> targetList = this.collectTargetFacade.findAll();
 
             // 取得対象の数だけ繰り返し
             for (CollectSite target : targetList) {
+		log.info("target {}",target.getSiteName());
                 if (target.getFlgDelete() == '1') {
                     continue;
                 }
@@ -97,7 +103,14 @@ public class GetRssService {
 
                 // 取得元情報を更新
                 target.setSiteName(feed.getTitle());
-                target.setLastPubAt(feed.getPublishedDate());
+		if ( feed.getPublishedDate() != null )
+		{
+		    target.setLastPubAt(feed.getPublishedDate());
+		}
+		else
+		{
+		    target.setLastPubAt(new Date());		    
+		}
                 this.collectTargetFacade.edit(target);
 
                 // 記事の数だけ繰り返し
@@ -111,6 +124,9 @@ public class GetRssService {
                         article.setArticleTitle(entry.getTitle());
                         article.setArticleUrl(entry.getLink());
                         article.setSiteId(target);
+			article.setCreatedAt(new Date());
+			article.setPublishAt(new Date());
+			article.setUpdatedAt(new Date());
 
                         if (entry.getDescription() != null) {
                             String tmp = this.removeHtmlTag(entry.getDescription().getValue());
@@ -131,13 +147,24 @@ public class GetRssService {
                         }
 
                         article.setCreatedAt(entry.getPublishedDate());
-                        article.setUpdatedAt(entry.getUpdatedDate());
+			
+			if (entry.getUpdatedDate() != null) 
+			{
+			    article.setUpdatedAt(entry.getUpdatedDate());
+			}
+			else
+			{
+			    article.setUpdatedAt(new Date());
+			}
 
                         this.articleFacade.create(article);
 
                         CollectArticle collectArticle = new CollectArticle();
                         collectArticle.setCollectId(collectInfo);
                         collectArticle.setArticleId(article);
+			collectArticle.setCreatedAt(new Date());
+			collectArticle.setUpdatedAt(new Date());			
+			log.info("ArticleFacade.create {}",collectArticle.getArticleId());
 
                         this.collectArticleFacade.create(collectArticle);
 
@@ -149,6 +176,8 @@ public class GetRssService {
                             CollectArticle collectArticle = new CollectArticle();
                             collectArticle.setCollectId(collectInfo);
                             collectArticle.setArticleId(article);
+			    collectArticle.setCreatedAt(new Date());
+			    collectArticle.setUpdatedAt(new Date());
 
                             this.collectArticleFacade.create(collectArticle);
                             collectInfo.getCollectArticleList().add(collectArticle);
@@ -156,7 +185,8 @@ public class GetRssService {
 
                     }
                 }
-            }
+            }	  
+	    
         } catch (RuntimeException e) {
             if (e.getCause() instanceof ConstraintViolationException) {
                 ConstraintViolationException cve = (ConstraintViolationException) e.getCause();
