@@ -47,6 +47,8 @@ public class ArticleAction {
     private List<VArticle> articleList = null;
     
     private String displayType;
+    
+    private Integer startPos;
 
     public String getDisplayType() {
         return displayType;
@@ -55,12 +57,31 @@ public class ArticleAction {
     public void setDisplayType(String displayType) {
         this.displayType = displayType;
     }
+
+    public Integer getStartPos() {
+	return startPos;
+    }
+
+    public void setStartPos(Integer startPos) {
+	this.startPos = startPos;
+    }
+
+    
+    public int getPervPos(){
+	return (this.startPos != null && this.startPos != 0) ? this.startPos - 100 : 0;
+    }
+    public int getNextPos(){
+	return (this.startPos != null && this.startPos != 0) ? this.startPos + 100 : 100;
+    }
+	    
+	    
     
     public List<VArticle> getArticleList(){
-        log.info("getArticleList start");
+        log.info("getArticleList start  pos={}",this.startPos);
         if ( this.articleList == null ) {
             int currentId = this.collectInfoFacade.findMaxCollectId();
-            this.articleList = this.vArticleFacade.findByCollectId(currentId);
+	    int start = this.startPos != null ? this.startPos : 0;
+            this.articleList = this.vArticleFacade.findByCollectId(currentId, start);
         
             log.info("currentId={}",currentId);
 

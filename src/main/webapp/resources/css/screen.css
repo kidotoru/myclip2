@@ -45,12 +45,14 @@ opacity:0.8;
  z-index: 2; 
  text-align: center;
  font-size: 18px;
+ padding-top: 20px;
 opacity:0.8; 
    -moz-border-radius: 5px;    /* Firefox */
    -webkit-border-radius: 5px; /* Safari,Chrome */
    border-radius: 5px;         /* CSS3 */
 
 }
+
 
 
 img {
@@ -177,6 +179,22 @@ h2 {
 position: relative;
 }
 
+.nav {
+    margin-left: 1em;
+    margin-right: 1em;
+    color:white;
+ bottom: 10px;
+ left: 10px;
+  background: darkblue;
+  width: 100px; 
+  height: 48px;
+ text-align: center;
+ font-size: 18px;
+   -moz-border-radius: 5px;    /* Firefox */
+   -webkit-border-radius: 5px; /* Safari,Chrome */
+   border-radius: 5px;         /* CSS3 */
+ padding-top: 20px; 
+}
 
 /*********************** ここからタブレット／PC用 **************************/
 

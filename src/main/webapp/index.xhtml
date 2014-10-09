@@ -9,6 +9,7 @@
         <f:metadata>
             <f:viewParam name="a" value="#{_articleId}"/>
             <f:viewParam name="t" value="#{articleAction.displayType}"/>
+            <f:viewParam name="s" value="#{articleAction.startPos}"/>
             
             <f:event type="preRenderView" listener="#{articleAction.redirect( _articleId )}"/>
         </f:metadata>    
@@ -91,7 +92,7 @@ $(function(){
                 <p:commandButton value="Hide" onclick="bar.hide();" type="button" />
             </div>
             </p:notificationBar>        
-            <div id="sdisp">
+            <div id="sdisp" style="display: none;">
                         <h:link value="詳細" outcome="index.xhtml" rendered="#{articleAction.displayType != 'd'}">
                             <f:param name="t" value="d"/>
                         </h:link>
@@ -134,7 +135,17 @@ $(function(){
                     <h:outputText value="#{_article.articleContentsStr}" escape="false" />
                 </div>
             </ui:repeat>
-        <div style="width: 1px;height:  58px;"></div>
+            <div style="float:left;"  class="nav"  rendered="#{articleAction.pervPos != '0'}">
+                        <h:link value="前" outcome="index.xhtml">
+                            <f:param name="s" value="#{articleAction.pervPos}"/>
+                        </h:link>                
+            </div>
+            <div style="float:right;" class="nav">
+                        <h:link value="次" outcome="index.xhtml">
+                            <f:param name="s" value="#{articleAction.nextPos}"/>
+                        </h:link>                
+            </div>
+        <div style="width: 1px;height:  58px;clear: both;" ></div>
         </div> 
     </h:body>
 </f:view>

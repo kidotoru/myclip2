@@ -78,12 +78,12 @@ public class VArticleFacade extends AbstractFacade<VArticle>{
 		FIND_BY_COLLECT_ID_SQL = sb.toString();
 	}
 
-    public List<VArticle> findByCollectId(int collectId){
+    public List<VArticle> findByCollectId(int collectId, int startPos){
         List<VArticle> resultList =
                 em.createNativeQuery(FIND_BY_COLLECT_ID_SQL, VArticle.class)
                 .setParameter("ID", collectId)
-                .setParameter("START_POS", 0)
-                .setParameter("END_POS", 99)
+                .setParameter("START_POS", startPos)
+                .setParameter("END_POS", 100)
                 .getResultList();
         return resultList;
     }
